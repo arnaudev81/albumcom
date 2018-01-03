@@ -22,4 +22,11 @@ class ImageRepository
         $image->user_id = auth()->id();
         $image->save();
     }
+
+    public function getImagesForCategory($slug)
+    {
+        return Image::latestWithUser()->whereHas('category', function ($query) use ($slug) {
+            $query->whereSlug($slug);
+        })->paginate(config('app.pagination'));
+    }
 }

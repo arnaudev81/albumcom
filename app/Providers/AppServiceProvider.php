@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\AbstractPaginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
@@ -23,9 +24,15 @@ class AppServiceProvider extends ServiceProvider
             return auth()->check() && auth()->user()->role === 'admin';
         });
 
+        Blade::if('adminOrOwner', function ($id) {
+            return auth()->check() && (auth()->id() === $id || auth()->user()->role === 'admin');
+        });
+
         if(request()->server("SCRIPT_NAME") !== 'artisan') {
             view ()->share ('categories', Category::all ());
         }
+
+        AbstractPaginator::defaultView("pagination::bootstrap-4");
     }
 
     /**

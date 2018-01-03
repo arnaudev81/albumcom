@@ -14,4 +14,8 @@ class Image extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function scopeLatestWithUser($query)
+    {
+        return $query->with('user')->latest();
+    }
 }

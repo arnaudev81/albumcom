@@ -11,3 +11,7 @@ body {
 .custom-file-control::before {
   content: "Parcourir";
 }
+
+.text-title, h1 {
+  color: white;
+}
