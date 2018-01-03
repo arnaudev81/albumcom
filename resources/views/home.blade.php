@@ -18,18 +18,18 @@
                     @endisset
                     <div class="card-footer text-muted">
                         <small><em>
-                                <a href="#" data-toggle="tooltip" title="{{ __('Voir les photos de ') . $image->user->name }}">{{ $image->user->name }}</a>
+                            <a href="{{ route('user', $image->user->id) }}" data-toggle="tooltip" title="{{ __('Voir les photos de ') . $image->user->name }}">{{ $image->user->name }}</a>
                             </em></small>
                         <small class="pull-right">
                             <em>
                                 {{ $image->created_at }}
-                                @adminOrOwner($image->user_id)
+
                                 <a class="form-delete" href="{{ route('image.destroy', $image->id) }}" data-toggle="tooltip" title="@lang('Supprimer cette photo')"><i class="fa fa-trash"></i></a>
                                 <form action="{{ route('image.destroy', $image->id) }}" method="POST" class="hide">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                 </form>
-                                @endadminOrOwner
+
                             </em>
                         </small>
                     </div>

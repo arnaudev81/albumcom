@@ -33,7 +33,12 @@
             </li>
             @admin
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle{{ currentRoute( route('category.create') )}}" href="#" id="navbarDropdownGestCat" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle{{ currentRoute(
+                        route('category.create'),
+                        route('category.index'),
+                        route('category.edit', request()->category),
+                        route('maintenance.index')
+                    )}}" href="#" id="navbarDropdownGestCat" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     @lang('Administration')
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownGestCat">
@@ -42,6 +47,9 @@
                     </a>
                     <a class="dropdown-item" href="{{ route('category.index') }}">
                         <i class="fa fa-wrench fa-lg"></i> @lang('Gérer les catégories')
+                    </a>
+                    <a class="dropdown-item" href="{{ route('maintenance.index') }}">
+                        <i class="fa fa-gears fa-lg"></i> @lang('Maintenance')
                     </a>
                 </div>
             </li>
