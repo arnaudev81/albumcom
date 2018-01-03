@@ -20,3 +20,9 @@ Route::middleware('admin')->group(function () {
     'except' => 'show'
     ]);
 });
+
+Route::middleware('auth')->group(function () {
+    Route::resource('image', 'ImageController', [
+    'only' => ['create', 'store', 'destroy']
+    ]);
+});

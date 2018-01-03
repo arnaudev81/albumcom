@@ -32,6 +32,9 @@
                 </div>
             </li>
             @endadmin
+            @auth
+                <li class="nav-item{{ currentRoute(route('image.create')) }}"><a class="nav-link" href="{{ route('image.create') }}">@lang('Ajouter une image')</a></li>
+            @endauth
         </ul>
         <ul class="navbar-nav">
             @guest
