@@ -25,8 +25,12 @@ Route::middleware('admin')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::resource('profile', 'UserController', [
+        'only' => ['edit', 'update'],
+        'parameters' => ['profile' => 'user']
+    ]);
     Route::resource('image', 'ImageController', [
-    'only' => ['create', 'store', 'destroy']
+        'only' => ['create', 'store', 'destroy']
     ]);
 });
 
