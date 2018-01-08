@@ -15,3 +15,7 @@ body {
 .text-title, h1 {
   color: white;
 }
+
+.dropdown-menu {
+  min-width: 5rem;
+}

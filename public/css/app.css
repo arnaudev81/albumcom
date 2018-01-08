@@ -10727,6 +10727,10 @@ body {
 .text-title, h1 {
   color: white;
 }
+
+.dropdown-menu {
+  min-width: 5rem;
+}
 /* Magnific Popup CSS */
 .mfp-bg {
   top: 0;
