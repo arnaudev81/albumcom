@@ -26,7 +26,7 @@ class ImagePolicy
      * @param \App\Models\Image $image
      * @return mixed
      */
-    public function delete(User $user, Image $image)
+    public function manage(User $user, Image $image)
     {
         return $user->id === $image->user_id;
     }

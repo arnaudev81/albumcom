@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
         'parameters' => ['profile' => 'user']
     ]);
     Route::resource('image', 'ImageController', [
-        'only' => ['create', 'store', 'destroy']
+        'only' => ['create', 'store', 'destroy', 'update']
     ]);
 });
 

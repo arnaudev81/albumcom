@@ -59,11 +59,27 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        $this->authorize('delete', $image);
+        $this->authorize('manage', $image);
 
         $image->delete();
 
         return back();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Image
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Image $image)
+    {
+        $this->authorize('manage', $image);
+
+        $image->category_id = $request->category_id;
+        $image->save();
+        return redirect()->back()->with('updated', __('La catégorie a bien été changée !'));
     }
 
     public function category($slug)
